@@ -1,0 +1,102 @@
+/* Top bar */
+.top-bar {
+    background-color: #0c0b12;
+    color: white;
+    text-align: center;
+    padding: 19px 0;
+    font-size: 17px;
+}
+
+/* Header layout */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-left i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Logo */
+.header-center {
+    text-align: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    margin: 0;
+    font-size: 12px;
+}
+
+/* Right side icons */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-link {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.icon-wrapper {
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: black;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+/* Navigation */
+.nav-bar {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-bar a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.nav-bar a:hover {
+    color: #444;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+}

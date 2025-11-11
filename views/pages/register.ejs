@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: #fff; /* only inside sidebar */
+            box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding: 20px;
+            z-index: 9999;
+        }
+
+        .sidebar.open {
+            width: 400px;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .sidebar h2 {
+            margin-top: 40px;
+        }
+
+        .sidebar form {
+            margin-top: 20px;
+        }
+
+        .sidebar input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            background: #222;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background: #444;
+        }
+
+        .sidebar p {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            color: #000;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="authSidebar" class="sidebar">
+        <button class="closebtn" onclick="closeAuthSidebar()">&times;</button>
+
+    <div id="registerForm"></div>
+    <h2>Register</h2>
+    <% if (error) { %>
+        <p style="color:red;"><%= error %></p>
+    <% } %>
+    <form action="/register" method="POST">
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+
+ <script>
+        function openAuthSidebar() {
+            document.getElementById("authSidebar").classList.add("open");
+        }
+
+        function closeAuthSidebar() {
+            document.getElementById("authSidebar").classList.remove("open");
+        }
+
+        function showRegister() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
+        }
+
+        function showLogin() {
+            document.getElementById("registerForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        }
+
+        // auto open when this page is loaded
+        window.onload = function () {
+            openAuthSidebar();
+        }
+    </script>
+
+
+</body>
+
+
+</html>

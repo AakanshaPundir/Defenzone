@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <!-- About Hero Section -->
+    <section>
+        <div class="container">
+            <h1 class="display-4 fw-bold">About Us</h1>
+            <p class="lead">At DefenZone, we blend style with strength, creating apparel that celebrates courage, resilience, and adventure.</p>
+        </div>
+    </section>
+
+    
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="/images/about-story.jpeg" alt="From Reel to Reality" class="img-fluid rounded shadow">
+            </div>
+
+            
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-3">From Reel to Reality</h2>
+                <p class="fs-5">
+                    DefenZone is for those who are ready to conquer the world in their style.
+                    Through our unique approach to fabrics, design, color, and aesthetics,
+                    we transform and reshape perceptions, challenging conventional fashion and trends.
+                    We make room for people to break free from the limitations of their world
+                    and escape into an alternate reality through our lens.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <hr>
+
+    <!-- Mission & Vision -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-6">
+                    <h3 class="fw-bold">Our Mission</h3>
+                    <p>
+                        To provide high-quality military-inspired apparel that stands the test of time, both in durability and fashion.
+                        We aim to inspire individuals to wear their values with pride.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="fw-bold">Our Vision</h3>
+                    <p>
+                        To become a leading name in tactical and lifestyle wear, connecting with communities who live boldly
+                        — from outdoor adventurers to proud patriots.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+     <div class="col-md-6">
+            <h2 class="display-4 fw-bold">Patriot and Proud</h2>
+            <p>
+                We celebrate the spirit of our nation and the bravery of those who protect it. 
+                Our designs are inspired by military aesthetics, discipline, and pride. 
+                Every piece we create reflects our commitment to honor, respect, and unity.
+            </p>
+        </div>
+        </div>
+    </section>
+    <%- include('partials/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

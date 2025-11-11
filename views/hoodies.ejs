@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+
+    <div class="container my-5">
+        <% hoodies.forEach(hoodie => { %>
+            <div class="row mb-5 align-items-center border-bottom pb-4">
+                <div class="col-md-4 text-center">
+                    <img src="<%= hoodie.image %>" alt="<%= hoodie.name %>" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h3><%= hoodie.name %></h3>
+                    <p class="text-muted">Regular, Armed forces special, Hoodie</p>
+                    <h4 class="text-danger"><%= hoodie.price %></h4>
+                    <ul>
+                        <li><strong>Color:</strong> <%= hoodie.colors.join('/') %></li>
+                        <li><strong>Design:</strong> <%= hoodie.design %></li>
+                        <li><strong>Style:</strong> <%= hoodie.style %></li>
+                        <li><strong>Vibe:</strong> <%= hoodie.vibe %></li>
+                        <li><strong>Perfect For:</strong> <%= hoodie.perfectFor %></li>
+                    </ul>
+                    <button class="btn btn-dark">SELECT OPTIONS</button>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <%- include('partials/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

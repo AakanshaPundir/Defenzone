@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+   
+    <!-- Font Awesome -- >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your custom styles -->
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+  
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar <%= showLoginSidebar ? 'open' : '' %> <%= showRegisterSidebar ? 'register-open' : '' %>">
+        <% if (showLoginSidebar) { %>
+            <h2>Sign In</h2>
+            <form action="/login" method="POST">
+                <p> Enter your email</p>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <p></p>
+                <p> Enter your password</p>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <p> </p>
+                <button type="submit">Login In</button>
+            </form>
+<P> </P>
+            <p>No account yet? <a href="/register"> Register </a></p>
+        <% } %>
+            
+        <% if (showRegisterSidebar) { %>
+            <h2>Register</h2>
+            <form action="/register" method="POST">
+                <input type="text" name="name" placeholder="Name" required><br>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <button type="submit">Register</button>
+            </form>
+        <% } %>
+
+        <button class="close-btn" onclick="closeSidebar()">×</button>
+    </div>
+    
+
+
+
+    <!-- Sidebar scripts -->
+    <script>
+        function closeSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.remove("open");
+            sidebar.classList.remove("register-open");
+        }
+
+        function openLoginSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.add("open");
+        }
+
+        function openRegisterSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.add("register-open");
+        }
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>WEAR YOUR VALOUR</h1>
+            <p>We celebrate passions that demand courage and resilience. From aviation to military, 
+            expeditions to wildlife, and the high seas to the open roads—our brand is built for 
+            those who live boldly.</p>
+        </div>
+    </section>
+
+    
+<section class="product-section">
+    <h2 class="collection-title">The Military Collection</h2>
+    <p class="collection-desc">
+        Forged from the very code that holds the line, discipline, dominance, and duty.
+    </p>
+
+   
+<section class="products-section">
+    <div class="container">
+    
+
+        <div class="product-grid">
+           <div class="product-card">
+                <img src="/images/n1.jpeg" alt="Tactical Combat Tee">
+                <h2>Tactical Combat Tee</h2>
+                <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/n2.jpeg" alt="Operator Apparel">
+                <h2>Operator Apparel</h2>
+                <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+                
+             <div class="product-card">
+                <img src="/images/marcos-force-tshirt.jpg" alt="Marcos Force T-Shirt">
+                <h2>Marcos Force T-Shirt</h2>
+                <p class="description">Regular, Marcos Commando Force,t-shirt</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/kargil-vijay-diwas-tshirt.jpeg" alt="Kargil Vijay Diwas T-Shirt">
+                <h2>Kargil Vijay Diwas T-Shirt</h2>
+                <p class="description">Defence, Adjustable, Street Style</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/n3.jpeg" alt="Armour T-Shirt">
+                <h2>Armour T-Shirt</h2>
+                <p class="description">Regular, Marcos Commando Force,t-shirt</p>
+                <p class="price">₹1499.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+    </div>
+</section>
+
+<section class="product-section">
+    <h2 class="collection-title">Polo T-Shirt</h2>
+    <p class="collection-desc">
+        Precision-Made for the Warrior in You.
+    </p>
+
+<section class="products-section">
+    <div class="container">
+    
+
+        <div class="product-grid">
+           <div class="product-card">
+                <img src="/images/Armour-tshirt.jpeg" alt="Armour T-Shirt">
+                <h2>Armour T-Shirt</h2>
+                <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/armour2.jpg" alt="Armour T-Shirt">
+                <h2>Armour T-Shirt</h2>
+                <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+                
+             <div class="product-card">
+                <img src="/images/t3.jpeg" alt="ARMY AGENT Polo T-Shirt">
+                <h2>Army Agent Polo T-Shirt</h2>
+                <p class="description">Regular, Marcos Commando Force,t-shirt</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/t1.jpeg" alt="ARMY CAMO Polo T-Shirt">
+                <h2>Army Camo Polo T-Shirt</h2>
+                <p class="description">Defence, Adjustable, Street Style</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/t2.jpeg" alt="Special Forces T-Shirt">
+                <h2>Special Forces T-Shirt</h2>
+                <p class="description">Regular, Marcos Commando Force,t-shirt</p>
+                <p class="price">₹1499.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+    </div>
+</section>
+
+
+<style>
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    .page-title { text-align: center; margin-bottom: 30px; font-size: 2rem;font-weight: bold;  }
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+        gap: 20px;
+    }
+    .product-card {
+        background: white;
+        border-radius: 8px;
+        padding: 5px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+    .product-card img { max-width: 100%; height: auto; border-radius: 8px; }
+    .description { font-size: 14px; color: #555; }
+    .price { font-size: 18px; font-weight: bold; margin: 10px 0; }
+    .add-to-cart {
+        background: black;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .add-to-cart:hover { background: darkgreen; }
+</style>
+
+
+<section class="feature-section">
+  <div class="feature">
+    <i class="fas fa-lock"></i>
+    <h3>SECURE PAYMENT</h3>
+    <p>All our payments are SSL secured</p>
+  </div>
+  <div class="divider"></div>
+  <div class="feature">
+    <i class="fas fa-box"></i>
+    <h3>DELIVERED WITH CARE</h3>
+    <p>Super fast shipping to your door</p>
+  </div>
+  <div class="divider"></div>
+  <div class="feature">
+    <i class="fas fa-headset"></i>
+    <h3>EXCELLENT SERVICE</h3>
+    <p>Live chat and phone support</p>
+  </div>
+</section>
+
+<section class="product-section">
+    <h2 class="collection-title">TactiCap</h2>
+    <p class="collection-desc">
+        Tactical headwear for every mission.Protection meets style.
+    </p>
+
+<section class="products-section">
+    <div class="container">
+    
+
+        <div class="product-grid">
+           <div class="product-card">
+                <img src="/images/c1.jpeg" alt="Army Hat">
+                <h2>Army Hat</h2>
+                <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/c2.jpeg" alt="Army Hat">
+                <h2>Army Hat</h2>
+                <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+                
+             <div class="product-card">
+                <img src="/images/c3.jpeg" alt="Army Cap">
+                <h2>Army Cap</h2>
+                <p class="description">Regular, Marcos Commando Force,t-shirt</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/c4.jpeg" alt="Army Cap">
+                <h2>Army Cap</h2>
+                <p class="description">Defence, Adjustable, Street Style</p>
+                <p class="price">₹899.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+             <div class="product-card">
+                <img src="/images/c5.jpeg" alt="Army Cap">
+                <h2>Army Cap</h2>
+                <p class="description">Regular, Marcos Commando Force,t-shirt</p>
+                <p class="price">₹1499.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+             <div class="product-card">
+                <img src="/images/c6.jpeg" alt="Army Cap">
+                <h2>Army Cap</h2>
+                <p class="description">Regular, Marcos Commando Force,t-shirt</p>
+                <p class="price">₹1499.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+    </div>
+</section>
+
+ <%- include('partials/footer') %>
+
+    <!-- Bootstrap  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
