@@ -6,6 +6,8 @@ const path = require("path");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const User = require("./models/User");
+const helmet = require("helmet");
+app.use(helmet());
 
 const app = express();
 
