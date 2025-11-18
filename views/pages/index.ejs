@@ -15,7 +15,7 @@
 </head>
 <body>
     <%- include('partials/header') %>
-  
+
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar <%= showLoginSidebar ? 'open' : '' %> <%= showRegisterSidebar ? 'register-open' : '' %>">
         <% if (showLoginSidebar) { %>
@@ -43,30 +43,9 @@
             </form>
         <% } %>
 
-        <button class="close-btn" onclick="closeSidebar()">×</button>
+         <button type="button" class="close-btn" id="sidebar-close">×</button>
     </div>
     
-
-
-
-    <!-- Sidebar scripts -->
-    <script>
-        function closeSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.classList.remove("open");
-            sidebar.classList.remove("register-open");
-        }
-
-        function openLoginSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.classList.add("open");
-        }
-
-        function openRegisterSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.classList.add("register-open");
-        }
-    </script>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -88,7 +67,6 @@
    
 <section class="products-section">
     <div class="container">
-    
 
         <div class="product-grid">
            <div class="product-card">
@@ -96,40 +74,71 @@
                 <h2>Tactical Combat Tee</h2>
                 <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p1"
+                    data-name="Tactical Combat Tee"
+                    data-price="899"
+                    data-image="/images/n1.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/n2.jpeg" alt="Operator Apparel">
                 <h2>Operator Apparel</h2>
                 <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p2"
+                    data-name="Operator Apparel"
+                    data-price="899"
+                    data-image="/images/n2.jpeg">
+                    Add to Cart
+                </button>
             </div>
                 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/marcos-force-tshirt.jpg" alt="Marcos Force T-Shirt">
                 <h2>Marcos Force T-Shirt</h2>
                 <p class="description">Regular, Marcos Commando Force,t-shirt</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p3"
+                    data-name="Marcos Force T-Shirt"
+                    data-price="899"
+                    data-image="/images/marcos-force-tshirt.jpg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/kargil-vijay-diwas-tshirt.jpeg" alt="Kargil Vijay Diwas T-Shirt">
                 <h2>Kargil Vijay Diwas T-Shirt</h2>
                 <p class="description">Defence, Adjustable, Street Style</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p4"
+                    data-name="Kargil Vijay Diwas T-Shirt"
+                    data-price="899"
+                    data-image="/images/kargil-vijay-diwas-tshirt.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/n3.jpeg" alt="Armour T-Shirt">
                 <h2>Armour T-Shirt</h2>
                 <p class="description">Regular, Marcos Commando Force,t-shirt</p>
                 <p class="price">₹1499.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p5"
+                    data-name="Armour T-Shirt"
+                    data-price="1499"
+                    data-image="/images/n3.jpeg">
+                    Add to Cart
+                </button>
             </div>
+        </div>
     </div>
 </section>
 
@@ -141,7 +150,6 @@
 
 <section class="products-section">
     <div class="container">
-    
 
         <div class="product-grid">
            <div class="product-card">
@@ -149,40 +157,71 @@
                 <h2>Armour T-Shirt</h2>
                 <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p6"
+                    data-name="Armour T-Shirt"
+                    data-price="899"
+                    data-image="/images/Armour-tshirt.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/armour2.jpg" alt="Armour T-Shirt">
                 <h2>Armour T-Shirt</h2>
                 <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p7"
+                    data-name="Armour T-Shirt"
+                    data-price="899"
+                    data-image="/images/armour2.jpg">
+                    Add to Cart
+                </button>
             </div>
                 
-             <div class="product-card">
-                <img src="/images/t3.jpeg" alt="ARMY AGENT Polo T-Shirt">
+            <div class="product-card">
+                <img src="/images/t3.jpeg" alt="Army Agent Polo T-Shirt">
                 <h2>Army Agent Polo T-Shirt</h2>
                 <p class="description">Regular, Marcos Commando Force,t-shirt</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p8"
+                    data-name="Army Agent Polo T-Shirt"
+                    data-price="899"
+                    data-image="/images/t3.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
-                <img src="/images/t1.jpeg" alt="ARMY CAMO Polo T-Shirt">
+            <div class="product-card">
+                <img src="/images/t1.jpeg" alt="Army Camo Polo T-Shirt">
                 <h2>Army Camo Polo T-Shirt</h2>
                 <p class="description">Defence, Adjustable, Street Style</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p9"
+                    data-name="Army Camo Polo T-Shirt"
+                    data-price="899"
+                    data-image="/images/t1.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/t2.jpeg" alt="Special Forces T-Shirt">
                 <h2>Special Forces T-Shirt</h2>
                 <p class="description">Regular, Marcos Commando Force,t-shirt</p>
                 <p class="price">₹1499.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p10"
+                    data-name="Special Forces T-Shirt"
+                    data-price="1499"
+                    data-image="/images/t2.jpeg">
+                    Add to Cart
+                </button>
             </div>
+        </div>
     </div>
 </section>
 
@@ -249,63 +288,139 @@
 
 <section class="products-section">
     <div class="container">
-    
 
         <div class="product-grid">
-           <div class="product-card">
+            <div class="product-card">
                 <img src="/images/c1.jpeg" alt="Army Hat">
                 <h2>Army Hat</h2>
                 <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p11"
+                    data-name="Army Hat"
+                    data-price="899"
+                    data-image="/images/c1.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/c2.jpeg" alt="Army Hat">
                 <h2>Army Hat</h2>
                 <p class="description">Oversized, Defence, Streetwear & Tactical Gear</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p12"
+                    data-name="Army Hat"
+                    data-price="899"
+                    data-image="/images/c2.jpeg">
+                    Add to Cart
+                </button>
             </div>
-                
-             <div class="product-card">
+
+            <div class="product-card">
                 <img src="/images/c3.jpeg" alt="Army Cap">
                 <h2>Army Cap</h2>
                 <p class="description">Regular, Marcos Commando Force,t-shirt</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p13"
+                    data-name="Army Cap"
+                    data-price="899"
+                    data-image="/images/c3.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/c4.jpeg" alt="Army Cap">
                 <h2>Army Cap</h2>
                 <p class="description">Defence, Adjustable, Street Style</p>
                 <p class="price">₹899.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p14"
+                    data-name="Army Cap"
+                    data-price="899"
+                    data-image="/images/c4.jpeg">
+                    Add to Cart
+                </button>
             </div>
 
-             <div class="product-card">
+            <div class="product-card">
                 <img src="/images/c5.jpeg" alt="Army Cap">
                 <h2>Army Cap</h2>
                 <p class="description">Regular, Marcos Commando Force,t-shirt</p>
                 <p class="price">₹1499.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p15"
+                    data-name="Army Cap"
+                    data-price="1499"
+                    data-image="/images/c5.jpeg">
+                    Add to Cart
+                </button>
             </div>
-            
-             <div class="product-card">
+
+            <div class="product-card">
                 <img src="/images/c6.jpeg" alt="Army Cap">
                 <h2>Army Cap</h2>
                 <p class="description">Regular, Marcos Commando Force,t-shirt</p>
                 <p class="price">₹1499.00</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-cart"
+                    data-id="p16"
+                    data-name="Army Cap"
+                    data-price="1499"
+                    data-image="/images/c6.jpeg">
+                    Add to Cart
+                </button>
             </div>
+        </div>
     </div>
 </section>
+
+
+<script>
+document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", async () => {
+
+        const product = {
+            id: button.dataset.id,
+            name: button.dataset.name,
+            price: button.dataset.price,
+            image: button.dataset.image
+        };
+
+        const response = await fetch("/cart/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(product)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert("Added to Cart!");
+            document.getElementById("cart-count").textContent = result.cartCount;
+
+        } else {
+            alert(result.message);
+        }
+    });
+});
+</script>
+
+
+
 
  <%- include('partials/footer') %>
 
     <!-- Bootstrap  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="/js/sidebar.js"></script>
+
+
 </body>
 </html>
 

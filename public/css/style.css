@@ -280,7 +280,7 @@ body {
      
       border: none;
       
-      color: blue;
+      color: rgb(4, 4, 15);
       font-weight: bold;
       cursor: pointer;
       transition:  0.3s ease;
@@ -305,7 +305,7 @@ body {
     .sidebar button {
       width: 100%;
       padding: 12px;
-      background-color: #16a1e1;
+      background-color: #02080a;
       border: none;
       border-radius: 5px;
       color: white;
@@ -315,8 +315,9 @@ body {
     }
 
     .sidebar button:hover {
-      background-color: #0f72fd;
+      background-color: #050a10;
     }
+
 
 
 /* Main Content */

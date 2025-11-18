@@ -7,49 +7,58 @@ const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const User = require("./models/User");
 const helmet = require("helmet");
-app.use(helmet());
+const Message = require("./models/Message");
+const cartRoutes = require("./routes/cart");
 
 const app = express();
 
-// EJS setup
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                defaultSrc: ["'self'"],
+                scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+                styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+                fontSrc: ["'self'", "https://cdn.jsdelivr.net", "data:"],
+            },
+        },
+        crossOriginEmbedderPolicy: false,
+    })
+);
+
+
+/* ==== VIEW ENGINE ==== */
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Middleware
+/* ==== STATIC FILES ==== */
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}));
+/* ==== SESSION ==== */
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+    })
+);
 
-// Initialize cart in session
+/* ==== MAKE SESSION AVAILABLE TO EJS ==== */
 app.use((req, res, next) => {
-  if (!req.session.cart) {
-    req.session.cart = [];
-  }
-  next();
-});
-app.post("/add-to-cart", (req, res) => {
-  const { productId } = req.body;
-  
-  // Add product to cart session
-  req.session.cart.push(productId);
-
-  res.json({ cartCount: req.session.cart.length }); // Send updated count
+    res.locals.session = req.session;
+    next();
 });
 
+/* ==== INIT CART IN SESSION ==== */
+app.use((req, res, next) => {
+    if (!req.session.cart) req.session.cart = [];
+    next();
+});
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log(' Connected to MongoDB Atlas'))
-.catch(err => console.error(' MongoDB connection error:', err));
-
+/* ==== CART ROUTES ==== */
+app.use("/cart", cartRoutes);
 
 // Middleware to check authentication
 function requireAuth(req, res, next) {
@@ -59,6 +68,14 @@ function requireAuth(req, res, next) {
     next();
 }
 
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log(' Connected to MongoDB Atlas'))
+.catch(err => console.error(' MongoDB connection error:', err));
 
 
 // Home 
@@ -167,48 +184,37 @@ app.get("/logout", (req, res) => {
     });
 });
 
-// About (Public)
-app.get("/about", (req, res) => {
-    res.render("about", { title: "About Us" });
-});
 
-// Size Guide
-app.get("/size-guide", (req, res) => {
-    res.render("pages/size-guide", { title: "Size Guide" });
-});
 
-const Message = require("./models/Message");
+/* ---------------- STATIC PAGES ---------------- */
+app.get("/about", (req, res) => res.render("about", { title: "About Us" }));
+app.get("/size-guide", (req, res) =>
+    res.render("pages/size-guide", { title: "Size Guide" })
+);
 
-// Contact Page (GET)
+/* ---------------- CONTACT ---------------- */
 app.get("/contact", (req, res) => {
-  res.render("pages/contact", { 
-    title: "Contact Us", 
-    success: null, 
-    error: null 
-  });
+    res.render("pages/contact", { title: "Contact Us", success: null, error: null });
 });
 
-// Contact Form (POST)
 app.post("/contact", async (req, res) => {
-  const { name, email, message } = req.body;
-  try {
-    const newMessage = new Message({ name, email, message });
-    await newMessage.save();
-    res.render("pages/contact", { 
-      title: "Contact Us", 
-      success: "✅ Message sent successfully! We’ll get back to you soon.", 
-      error: null 
-    });
-  } catch (err) {
-    console.error("Error saving message:", err);
-    res.render("pages/contact", { 
-      title: "Contact Us", 
-      success: null, 
-      error: "❌ Something went wrong. Please try again later." 
-    });
-  }
+    const { name, email, message } = req.body;
+    try {
+        const newMessage = new Message({ name, email, message });
+        await newMessage.save();
+        res.render("pages/contact", {
+            title: "Contact Us",
+            success: "Message sent successfully!",
+            error: null,
+        });
+    } catch (err) {
+        res.render("pages/contact", {
+            title: "Contact Us",
+            success: null,
+            error: "Something went wrong!",
+        });
+    }
 });
-
 
 
 app.get('/products', (req, res) => {
