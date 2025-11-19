@@ -19,20 +19,24 @@
     </div>
 
     <!-- Right: Login & Cart -->
-    <div class="header-right">
-        <a href="/login" class="login-link">Login / Register</a>
-        <div class="icon-wrapper">
-            <i class="fa fa-heart"></i>
-            <span class="count">0</span>
+   <div class="header-right">
+    <a href="/login" class="login-link">Login / Register</a>
 
-        <div class="icon-wrapper cart-icon">
-    <i class="fas fa-shopping-bag"></i>
-    <span class="count" id="cart-count">
-        <%= (session && session.cart) ? session.cart.reduce((sum,i)=>sum+i.qty,0) : 0 %>
-    </span>
+    <!-- Wishlist Icon -->
+    <div class="icon-wrapper">
+        <i class="fa fa-heart"></i>
+        <span class="count">0</span>
+    </div>
+
+    <!-- Cart Icon -->
+    <div class="icon-wrapper cart-icon">
+       <i class="fa fa-shopping-cart"></i>
+        <span class="count" id="cart-count">
+            <%= (session && session.cart) ? session.cart.reduce((sum,i)=>sum+i.qty,0) : 0 %>
+        </span>
+    </div>
 </div>
 
-    </div>
 </header>
 
 <!-- Navigation -->
@@ -79,9 +83,10 @@
 
 
 <!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/style.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
