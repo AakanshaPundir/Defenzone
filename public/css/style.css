@@ -99,7 +99,7 @@
     font-size: 0.9rem;
     color: green;
 }
-/* Full width background with gradient */
+
 .feature-section {
   display: flex;
   align-items: center;
@@ -110,7 +110,6 @@
   color: white;
 }
 
-/* Each feature block */
 .feature {
   flex: 1;
   text-align: center;
@@ -134,7 +133,7 @@
   opacity: 0.9;
 }
 
-/* Stylish divider */
+
 .divider {
   width: 2px;
   background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.6), transparent);
@@ -225,10 +224,10 @@
 .sidebar {
     position: fixed;
     top: 0;
-    right: -400px; /* hidden by default */
+    right: -400px; 
     width: 350px;
     height: 100%;
-    background: #edf0f0; /* dark gray */
+    background: #edf0f0; 
     box-shadow: -2px 0 10px rgba(14, 2, 2, 0);
     padding: 20px;
     transition: right 0.3s ease;
@@ -237,7 +236,7 @@
 }
 
 .sidebar.open {
-    right: 0; /* slide in */
+    right: 0; 
 }
 
 .sidebar.register-open {
@@ -259,7 +258,7 @@
     border: none;
     cursor: pointer;
 }
-/* Reset & Base */
+
 * {
   margin: 0;
   padding: 0;

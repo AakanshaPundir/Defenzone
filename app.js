@@ -46,16 +46,16 @@ app.use(
 
 
 
-/* ==== VIEW ENGINE ==== */
+/*  VIEW ENGINE */
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-/* ==== STATIC FILES ==== */
+/*STATIC PAGE */
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/* ==== SESSION ==== */
+/*  SESSION */
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -64,19 +64,19 @@ app.use(
     })
 );
 
-/* ==== MAKE SESSION AVAILABLE TO EJS ==== */
+/* MAKE SESSION AVAILABLE TO EJS  */
 app.use((req, res, next) => {
     res.locals.session = req.session;
     next();
 });
 
-/* ==== INIT CART IN SESSION ==== */
+/*  INIT CART IN SESSION  */
 app.use((req, res, next) => {
     if (!req.session.cart) req.session.cart = [];
     next();
 });
 
-/* ==== CART ROUTES ==== */
+/*  CART ROUTES  */
 app.use("/cart", cartRoutes);
 
 // Middleware to check authentication
@@ -205,13 +205,13 @@ app.get("/logout", (req, res) => {
 
 
 
-/* ---------------- STATIC PAGES ---------------- */
+/* STATIC PAGES */
 app.get("/about", (req, res) => res.render("about", { title: "About Us" }));
 app.get("/size-guide", (req, res) =>
     res.render("pages/size-guide", { title: "Size Guide" })
 );
 
-/* ---------------- CONTACT ---------------- */
+/*  CONTACT  */
 app.get("/contact", (req, res) => {
     res.render("pages/contact", { title: "Contact Us", success: null, error: null });
 });
