@@ -1,0 +1,46 @@
+<h3>REVIEWS</h3>
+
+<% if (reviews.length === 0) { %>
+    <p>There are no reviews yet.</p>
+<% } else { %>
+    <% reviews.forEach(r => { %>
+        <div class="review-box">
+            <div><strong><%= r.name %></strong> — <%= r.rating %> ⭐</div>
+            <p><%= r.review %></p>
+            <small><%= r.createdAt.toDateString() %></small>
+        </div>
+        <hr>
+    <% }) %>
+<% } %>
+
+<h3>Write a Review</h3>
+
+<form action="/reviews/add" method="POST">
+    <input type="hidden" name="productId" value="<%= product._id %>">
+
+    <label>Your Rating *</label>
+    <select name="rating" required>
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+    </select>
+
+    <label>Your Review *</label>
+    <textarea name="review" required></textarea>
+
+    <label>Name *</label>
+    <input type="text" name="name" required>
+
+    <label>Email *</label>
+    <input type="email" name="email" required>
+
+    <button type="submit">Submit Review</button>
+</form>
+
+<% if (reviewSuccess) { %>
+<script>
+    alert("Thank you! Your review has been submitted.");
+</script>
+<% } %>

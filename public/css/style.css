@@ -537,3 +537,6 @@ body {
   color: #c62828;
   border: 1px solid #ef9a9a;
 }
+body {
+    padding-top: 0;
+}

@@ -1,0 +1,128 @@
+<style>
+
+
+.search-wrapper {
+    margin-top: 30px;
+}
+
+
+.search-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+.search-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+}
+
+
+.search-card img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: contain !important; 
+    background: #f9f9f9;
+    padding: 10px;
+    display: block;
+}
+
+
+.search-body {
+    padding: 12px;
+    text-align: center;
+}
+
+.search-body h5 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.search-body .price {
+    color: #0d6efd;
+    font-weight: 700;
+}
+/* Buy Now Button */
+.search-body .buy-btn {
+    width: 100%;
+    padding: 8px;
+    margin-top: auto;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-body .buy-btn:hover {
+    background: #0d6efd;
+}
+
+.search-title {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+
+
+@media (max-width: 992px) {
+    .search-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .search-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="search-title">
+    Search Results for "<%= query %>"
+</div>
+
+
+    <% if (results.length === 0) { %>
+        <p>No products found.</p>
+    <% } else { %>
+
+        <div class="search-grid">
+               <% results.forEach(product => { %>
+                <div class="search-card">
+
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+
+                    <div class="search-body">
+    
+                      <h5><%= product.name %></h5>
+                      <p class="price"><%= product.price %></p>
+
+                      <a href="/product/<%= product.id %>" class="buy-btn">
+                            Buy Now
+                      </a>
+</div>
+
+
+                </div>
+            <% }) %>
+
+        </div>
+
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>

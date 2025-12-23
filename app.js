@@ -1,7 +1,9 @@
 
 const mongoose = require('mongoose');
-require('dotenv').config();
 const express = require("express");
+const app = express();
+require('dotenv').config();
+
 const path = require("path");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
@@ -9,8 +11,10 @@ const User = require("./models/User");
 const helmet = require("helmet");
 const Message = require("./models/Message");
 const cartRoutes = require("./routes/cart");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-const app = express();
+
 
 app.use(
     helmet({
@@ -43,6 +47,9 @@ app.use(
         crossOriginEmbedderPolicy: false,
     })
 );
+const reviewRoutes = require("./routes/review");
+app.use("/reviews", reviewRoutes);
+
 
 
 
@@ -734,6 +741,39 @@ app.get("/shop/cargo", (req, res) => {
 app.get('/cargos', (req, res) => {
     res.render('cargos', { title: "Cargo Collection", cargos: cargoData });
 });
+
+// 🔍 SEARCH ROUTE
+app.get("/search", (req, res) => {
+    const query = req.query.q?.toLowerCase();
+
+    if (!query) {
+        return res.render("pages/search", {
+            title: "Search",
+            results: [],
+            query: ""
+        });
+    }
+
+    // Combine all products
+    const allProducts = [
+        ...tshirtsData,
+        ...hoodieData,
+        ...tacticapData,
+        ...cargoData
+    ];
+
+    // Search by product NAME only
+    const results = allProducts.filter(product =>
+        product.name.toLowerCase().includes(query)
+    );
+
+    res.render("pages/search", {
+        title: "Search Results",
+        results,
+        query: req.query.q
+    });
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(` Server running on http://localhost:${PORT}`));
