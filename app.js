@@ -10,9 +10,31 @@ const bcrypt = require("bcryptjs");
 const User = require("./models/User");
 const helmet = require("helmet");
 const Message = require("./models/Message");
-const cartRoutes = require("./routes/cart");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+});
+
+
+app.use(session({
+    secret: "defenzone_secret_key",
+    resave: false,
+    saveUninitialized: true
+}));
+
+
+/*  INIT CART IN SESSION  */
+app.use((req, res, next) => {
+    if (!req.session.cart) req.session.cart = [];
+    next();
+});
+
+const cartRoutes = require("./routes/cart");
+app.use("/cart", cartRoutes);
 
 
 
@@ -58,6 +80,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 /*STATIC PAGE */
+app.use(express.static("public"));
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -77,14 +101,8 @@ app.use((req, res, next) => {
     next();
 });
 
-/*  INIT CART IN SESSION  */
-app.use((req, res, next) => {
-    if (!req.session.cart) req.session.cart = [];
-    next();
-});
 
-/*  CART ROUTES  */
-app.use("/cart", cartRoutes);
+
 
 // Middleware to check authentication
 function requireAuth(req, res, next) {
@@ -742,7 +760,9 @@ app.get('/cargos', (req, res) => {
     res.render('cargos', { title: "Cargo Collection", cargos: cargoData });
 });
 
-// 🔍 SEARCH ROUTE
+
+
+//  SEARCH ROUTE
 app.get("/search", (req, res) => {
     const query = req.query.q?.toLowerCase();
 

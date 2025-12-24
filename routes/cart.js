@@ -28,8 +28,27 @@ router.post("/add", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    const cart = req.session.cart || [];
-    res.render("cart", { title: "Your Cart", cart });
+
+    
+    if (!req.session.cart) {
+        req.session.cart = [];
+    }
+
+    res.render("pages/cart", {
+        cart: req.session.cart
+    });
 });
+
+/* REMOVE ITEM */
+router.get("/remove/:id", (req, res) => {
+    const productId = req.params.id;
+
+    req.session.cart = req.session.cart.filter(
+        item => item.id !== productId
+    );
+
+    res.redirect("/cart");
+});
+
 
 module.exports = router;

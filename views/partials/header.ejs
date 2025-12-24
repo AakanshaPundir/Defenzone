@@ -1,11 +1,141 @@
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Bootstrap JS (for dropdown & toggle) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- CSS (MUST be at the top of header) -->
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/header.css">
-<link rel="stylesheet" href="/css/reviews.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>  
+/* Top bar */
+.top-bar {
+    background-color: #0c0b12;
+    color: white;
+    text-align: center;
+    padding: 19px 0;
+    font-size: 17px;
+}
+
+/* Header layout */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-left i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Logo */
+.header-center {
+    text-align: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    margin: 0;
+    font-size: 12px;
+}
+
+/* Right side icons */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-link {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.icon-wrapper {
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: black;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+/* Navigation */
+.nav-bar {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-bar a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.nav-bar a:hover {
+    color: #444;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+}
+body {
+    padding-top: 0;
+}
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.search-input {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+}
+</style>
 
  <!-- Top contact bar -->
 <div class="top-bar">
@@ -29,19 +159,25 @@
     <!-- Right: Login & Cart -->
     <div class="header-right">
         <a href="/login" class="login-link">Login / Register</a>
+
         <div class="icon-wrapper">
-            <i class="fa fa-heart"></i>
+            <i class="fa-solid fa-heart"></i>
             <span class="count">0</span>
         </div>
-        <div class="icon-wrapper">
-            <i class="fa fa-shopping-bag"></i>
-            <span class="count">0</span>
-        </div>
+
+        <a href="/cart" class="icon-wrapper cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="count" id="cart-count">
+                <%= (session && session.cart) 
+                    ? session.cart.reduce((sum,i)=>sum+i.qty,0) 
+                    : 0 %>
+            </span>
+        </a>
     </div>
-</header>
+  </header>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
   <div class="container">
     <a class="navbar-brand" href="/">DefenZone</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,6 +216,7 @@
     </div>
   </div>
 </nav>
+
 
 
 

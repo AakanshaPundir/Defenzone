@@ -90,6 +90,7 @@
     }
 }
 </style>
+<%- include('../partials/header') %>
 
 <div class="search-title">
     Search Results for "<%= query %>"
@@ -111,9 +112,11 @@
                       <h5><%= product.name %></h5>
                       <p class="price"><%= product.price %></p>
 
-                      <a href="/product/<%= product.id %>" class="buy-btn">
-                            Buy Now
-                      </a>
+                      <form action="/cart/add/<%= product.id %>" method="POST" style="width:100%;">
+        <button type="submit" class="buy-btn">
+            Buy Now
+        </button>
+    </form>
 </div>
 
 

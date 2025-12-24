@@ -45,14 +45,14 @@
             <span class="count">0</span>
         </div>
 
-        <div class="icon-wrapper cart-icon">
+        <a href="/cart" class="icon-wrapper cart-icon">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="count" id="cart-count">
                 <%= (session && session.cart) 
                     ? session.cart.reduce((sum,i)=>sum+i.qty,0) 
                     : 0 %>
             </span>
-        </div>
+        </a>
     </div>
 </header>
 
